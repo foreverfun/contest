@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Best Snowboarding Trick
+  
+  form(action="submitVideo" method="post")
+    input(type="text" name="videoname")
+    input(type="text" name="videourl")
+    input(type="text" name="title")
+    textarea(type="text" name="description")
+    input(type="submit")

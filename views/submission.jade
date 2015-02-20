@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Best Snowboarding Trick
+  
+  ul
+  for video in videos
+    li
+      h1=video.name
+    li 
+      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video.url}" frameborder="0" allowfullscreen)
+    li=video.title
+    li=video.description
