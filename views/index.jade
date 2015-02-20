@@ -3,3 +3,14 @@ extends layout
 block content
   h1 Contest
   h2 Best Snowboarding Trick
+
+  if (videoNum === 5)
+    h2 Contest is filled!
+  
+  else 
+    form(action="submitVideoForm" method="post")
+      input(type="text" name="name")
+      input(type="text" name="url")
+      input(type="title" name="title")
+      textarea(type="description" name="description")
+      input(type="submit")

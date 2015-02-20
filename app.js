@@ -9,9 +9,12 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', indexController.index);
-//app.get('submit', indexController.submitEntry);
+
 //display videos in this page
 app.get('/submission', indexController.submission);
+
+app.post('/submitVideoForm', indexController.submitVideo);
+
 
 var server = app.listen(8634, function() {
 	console.log('Express server listening on port ' + server.address().port);
