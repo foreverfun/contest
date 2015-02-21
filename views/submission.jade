@@ -4,14 +4,17 @@ block content
   h1 Best Snowboarding Trick
   
   
-  a(href="/")
-    .Submit An Entry
+  h2=video0.name
+    p
+      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video0.id}" frameborder="0" allowfullscreen)
+    p=video0.title
+    p=video0.description 
+    
+  h2=video1.name
+    p
+      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video1.id}" frameborder="0" allowfullscreen)
+    p=video1.title
+    p=video1.description 
 
-  ul
-  for video in videos
-    li
-      h1=video.name
-    li 
-      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video.id}" frameborder="0" allowfullscreen)
-    li=video.title
-    li=video.description
+  a(href="/submission/#{pageNum}").
+    Next

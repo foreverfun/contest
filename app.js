@@ -10,8 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', indexController.index);
 
-//display videos in this page
-app.get('/submission', indexController.submission);
+app.get('/submission/:pair', indexController.submission);
 
 app.post('/submitVideoForm', indexController.submitVideo);
 

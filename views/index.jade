@@ -4,13 +4,33 @@ block content
   h1 Contest
   h2 Best Snowboarding Trick
 
-  if (videoNum === 5)
+  if contestFilled
     h2 Contest is filled!
+    h2 
+      a(href="/submission/0").
+        Voting
   
   else 
     form(action="submitVideoForm" method="post")
-      input(type="text" name="name")
-      input(type="text" name="url")
-      input(type="title" name="title")
-      textarea(type="description" name="description")
-      input(type="submit")
+      p
+        label Name:
+        input(type="text" name="name" value="SnowProfessor")
+      p
+        Label Video's URL:
+        input(type="text" name="url" value="https://www.youtube.com/watch?v=1WXbB2EjvSw")
+      p
+        Label Title:  
+        input(type="title" name="title" value="How to Snowboard: First Jump")
+      p
+        Label Description:
+        textarea(type="description" name="description").
+          In this episode we discuss how to master teeny jumps in the terrain park. We'll cover the basics of popping, approach and landing your first small feature. 
+      p
+        input(type="submit")
+
+  for video in videos
+    h1=video.name
+    p 
+      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video.id}" frameborder="0" allowfullscreen)
+    p=video.title
+    p=video.description
