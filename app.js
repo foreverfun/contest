@@ -10,9 +10,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', indexController.index);
 
-app.get('/submission/:pair', indexController.submission);
+app.get('/submission', indexController.submission);
+app.get('/round2', indexController.round2);
 
 app.post('/submitVideoForm', indexController.submitVideo);
+app.post('/votingForm', indexController.votingVideos);
 
 
 var server = app.listen(8634, function() {

@@ -1,20 +1,44 @@
 extends layout
 
 block content
-  h1 Best Snowboarding Trick
-  
-  
-  h2=video0.name
-    p
-      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video0.id}" frameborder="0" allowfullscreen)
-    p=video0.title
-    p=video0.description 
-    
-  h2=video1.name
-    p
-      iframe(width="560" height="315" src="//www.youtube.com/embed/#{video1.id}" frameborder="0" allowfullscreen)
-    p=video1.title
-    p=video1.description 
+  script.
+    var video0TotalVotes = 0;
+    var video1TotalVotes = 0;
+    var votingCounter = function(video) { 
+      if (video) {
+        video1TotalVotes++;
+        document.getElementById("video1").value = video1TotalVotes;
+      }
+      else {
+        video0TotalVotes++;
+        document.getElementById("video0").value = video0TotalVotes;
+      }
+    }
 
-  a(href="/submission/#{pageNum}").
-    Next
+  h1 Best Snowboarding Trick
+
+    form(action="votingForm" method="post")
+
+      h2=video0.name
+        p
+          iframe(width="250" height="188" src="//www.youtube.com/embed/#{video0.id}" frameborder="0" allowfullscreen)
+        p=video0.title
+        p=video0.description
+        input(type="text" name="video0title" value="#{video0.title}")
+        input(type="text" name="video0voting" id="video0" value="0")
+        input(type="button" onclick="votingCounter(0)" value="Voting")
+      
+
+      h2=video1.name
+        p
+          iframe(width="250" height="188" src="//www.youtube.com/embed/#{video1.id}" frameborder="0" allowfullscreen)
+        p=video1.title
+        p=video1.description
+        input(type="text" name="video1title" value="#{video1.title}")
+        input(type="text" name="video1voting" id="video1" value="0")
+        input(type="button" onclick="votingCounter(1)" value="Voting")      
+      
+      input(type="submit" name="Next")
+  
+  //- a(href="/submission/#{pairNum}/#{video0TotalVotes}/#{video1TotalVotes}").
+  //-   Next
